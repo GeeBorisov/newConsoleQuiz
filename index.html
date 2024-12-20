@@ -21,7 +21,7 @@
 
   <body style="flex-wrap: wrap">
     <!-- Card 01 -->
-    <div data-card="1" class="plate">
+    <div data-card="1" data-validate="novalidate" class="plate">
       <div class="cover-content-wrapper">
         <div class="cover-content">
           <img class="title-img" src="img/pictures/html.png" alt="HTML" />
@@ -48,32 +48,52 @@
 
       <!-- Content ... -->
       <div class="plate-content">
-        <h2 class="title-main">Что означает сокращение HTML?</h2>
+        <h2 data-question class="title-main">Что означает сокращение HTML?</h2>
         <div class="radio-group">
           <!-- radio-block -->
           <label class="radio-block">
-            <input type="radio" name="radio-group" class="radio-block__real" />
+            <input
+              type="radio"
+              name="what-html-means"
+              class="radio-block__real"
+              value="Hero Tutorial Multi Level"
+            />
             <div class="radio-block__fake"></div>
             <div class="radio-block__text">Hero Tutorial Multi Level</div>
           </label>
           <!-- // radio-block -->
           <!-- radio-block -->
           <label class="radio-block radio-block--active">
-            <input type="radio" name="radio-group" class="radio-block__real" />
+            <input
+              type="radio"
+              name="what-html-means"
+              class="radio-block__real"
+              value="Hyper Text Markup Language"
+            />
             <div class="radio-block__fake"></div>
             <div class="radio-block__text">Hyper Text Markup Language</div>
           </label>
           <!-- // radio-block -->
           <!-- radio-block -->
           <label class="radio-block">
-            <input type="radio" name="radio-group" class="radio-block__real" />
+            <input
+              type="radio"
+              name="what-html-means"
+              class="radio-block__real"
+              value="High Task Mirage Language"
+            />
             <div class="radio-block__fake"></div>
             <div class="radio-block__text">High Task Mirage Language</div>
           </label>
           <!-- // radio-block -->
           <!-- radio-block -->
           <label class="radio-block">
-            <input type="radio" name="radio-group" class="radio-block__real" />
+            <input
+              type="radio"
+              name="what-html-means"
+              class="radio-block__real"
+              value="HTML не имеет расшифровки. Это военная разработка"
+            />
             <div class="radio-block__fake"></div>
             <div class="radio-block__text">HTML не имеет расшифровки. Это военная разработка.</div>
           </label>
@@ -112,32 +132,36 @@
 
       <!-- Content ... -->
       <div class="plate-content">
-        <h2 class="title-main">Что означает сокращение HTML?</h2>
+        <h2 data-question class="title-main">Что означает сокращение HTML?</h2>
         <div class="checkbox-group">
           <!-- checkbox-block -->
           <label class="checkbox-block">
-            <input type="checkbox" name="radio-group" class="checkbox-block__real" />
+            <input type="checkbox" name="Hero Tutorial Multi Level" class="checkbox-block__real" />
             <div class="checkbox-block__fake"></div>
             <div class="checkbox-block__text">Hero Tutorial Multi Level</div>
           </label>
           <!-- // checkbox-block -->
           <!-- checkbox-block -->
           <label class="checkbox-block checkbox-block--active">
-            <input type="checkbox" name="radio-group" class="checkbox-block__real" />
+            <input type="checkbox" name="Hyper Text Markup Language" class="checkbox-block__real" />
             <div class="checkbox-block__fake"></div>
             <div class="checkbox-block__text">Hyper Text Markup Language</div>
           </label>
           <!-- // checkbox-block -->
           <!-- checkbox-block -->
           <label class="checkbox-block">
-            <input type="checkbox" name="radio-group" class="checkbox-block__real" />
+            <input type="checkbox" name="High Task Mirage Language" class="checkbox-block__real" />
             <div class="checkbox-block__fake"></div>
             <div class="checkbox-block__text">High Task Mirage Language</div>
           </label>
           <!-- // checkbox-block -->
           <!-- checkbox-block -->
           <label class="checkbox-block">
-            <input type="checkbox" name="radio-group" class="checkbox-block__real" />
+            <input
+              type="checkbox"
+              name="HTML не имеет расшифровки. Это военная разработка."
+              class="checkbox-block__real"
+            />
             <div class="checkbox-block__fake"></div>
             <div class="checkbox-block__text">
               HTML не имеет расшифровки. Это военная разработка.
@@ -178,13 +202,13 @@
 
       <!-- Content ... -->
       <div class="plate-content">
-        <h2 class="title-main">На HTML можно создавать:</h2>
+        <h2 data-question class="title-main">На HTML можно создавать:</h2>
 
         <div class="cards-group">
           <!-- card-block -->
           <label class="card-block">
             <div class="card-block__radio">
-              <input name="image-group" type="radio" class="card-block__radio-real" />
+              <input name="image-group" type="radio" class="card-block__radio-real" value="Мобильные приложения" />
               <div class="card-block__radio-fake"></div>
             </div>
             <div class="card-block__radio"></div>
@@ -197,7 +221,7 @@
           <!-- card-block -->
           <label class="card-block">
             <div class="card-block__radio">
-              <input name="image-group" type="radio" class="card-block__radio-real" />
+              <input name="image-group" type="radio" class="card-block__radio-real" value="Сайты для всех браузеров и платформ" />
               <div class="card-block__radio-fake"></div>
             </div>
             <div class="card-block__img">
@@ -209,7 +233,7 @@
           <!-- card-block -->
           <label class="card-block">
             <div class="card-block__radio">
-              <input name="image-group" type="radio" class="card-block__radio-real" />
+              <input name="image-group" type="radio" class="card-block__radio-real" value="Программы для Windows" />
               <div class="card-block__radio-fake"></div>
             </div>
             <div class="card-block__radio"></div>
@@ -222,7 +246,7 @@
           <!-- card-block -->
           <label class="card-block">
             <div class="card-block__radio">
-              <input name="image-group" type="radio" class="card-block__radio-real" />
+              <input name="image-group" type="radio" class="card-block__radio-real" value="Программы для Linux" />
               <div class="card-block__radio-fake"></div>
             </div>
             <div class="card-block__radio"></div>
@@ -263,11 +287,11 @@
             src="img/icons/clapping.svg"
             alt="Отлично! Последний шаг!"
           />
-          <div class="title">Отлично! Последний шаг!</div>
+          <div data-question class="title">Отлично! Последний шаг!</div>
 
           <div class="form-group">
             <label class="label" for="email">Введите Email:</label>
-            <input class="input-email" type="email" id="email" placeholder="Ваш Email" />
+            <input class="input-email" name="email" type="email" id="email" placeholder="Ваш Email" />
           </div>
 
           <input
@@ -278,7 +302,7 @@
           />
 
           <label class="checkbox">
-            <input type="checkbox" class="checkbox__real" />
+            <input type="checkbox" class="checkbox__real"  name="policy" />
             <div class="checkbox__fake"></div>
             <div class="checkbox__text">С политикой конфеденциальности ознакомлен</div>
           </label>
