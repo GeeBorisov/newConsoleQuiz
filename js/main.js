@@ -15,9 +15,17 @@ btnNext.forEach(function (button) {
 
     if (thisCard.dataset.validate == 'novalidate') {
       navigate('next', thisCard);
+      updateProgressBar('next', thisCardNumber);
     } else {
       saveAnswer(thisCardNumber, getherCardData(thisCardNumber));
-      navigate('next', thisCard);
+      if (isFilled(thisCardNumber) && checkOnRequired(thisCardNumber)) {
+        navigate('next', thisCard);
+        updateProgressBar('next', thisCardNumber);
+      } else if (thisCardNumber == 5) {
+        alert('Введите email и ознакомтесь с политикой конфеденциальности');
+      } else {
+        alert('Сделайте ответ прежде чем переходить далее.');
+      }
     }
   });
 });
@@ -25,7 +33,10 @@ btnNext.forEach(function (button) {
 btnPrev.forEach(function (button) {
   button.addEventListener('click', function () {
     let thisCard = this.closest('[data-card]');
+    let thisCardNumber = parseInt(thisCard.dataset.card);
+
     navigate('prev', thisCard);
+    updateProgressBar('prev', thisCardNumber);
   });
 });
 
@@ -92,4 +103,86 @@ function getherCardData(number) {
 
 function saveAnswer(number, data) {
   answers[number] = data;
+}
+
+function isFilled(number) {
+  if (answers[number].answer.length > 0) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function validateEmail(email) {
+  let pattern = /^[\w-\.]+@[\w-]+\.[a-z]{2,4}$/i;
+  return pattern.test(email);
+}
+
+function checkOnRequired(number) {
+  let currentCard = document.querySelector(`[data-card="${number}"]`);
+  let requiredFields = currentCard.querySelectorAll('[required]');
+  let isValidArray = [];
+
+  requiredFields.forEach(function (item) {
+    if (item.type == 'checkbox' && item.checked == false) {
+      isValidArray.push(false);
+    } else if (item.type == 'email') {
+      if (validateEmail(item.value)) {
+        isValidArray.push(true);
+      } else {
+        isValidArray.push(false);
+      }
+    }
+  });
+
+  if (isValidArray.indexOf(false) == -1) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+document.querySelectorAll('.radio-group').forEach(function (item) {
+  item.addEventListener('click', function (e) {
+    let label = e.target.closest('label');
+    if (label) {
+      label
+        .closest('.radio-group')
+        .querySelectorAll('label')
+        .forEach(function (item) {
+          item.classList.remove('radio-block--active');
+        });
+      label.classList.add('radio-block--active');
+    }
+  });
+});
+
+document.querySelectorAll('label.checkbox-block input[type="checkbox"]').forEach(function (item) {
+  item.addEventListener('change', function () {
+    if (item.checked) {
+      item.closest('label').classList.add('checkbox-block--active');
+    } else {
+      item.closest('label').classList.remove('checkbox-block--active');
+    }
+  });
+});
+
+function updateProgressBar(direction, cardNumber) {
+  let cardsTotalNumber = document.querySelectorAll('[data-card]').length;
+  if (direction == 'next') {
+    cardNumber = cardNumber + 1;
+  } else if (direction == 'prev') {
+    cardNumber = cardNumber - 1;
+  }
+
+  let progress = ((cardNumber * 100) / cardsTotalNumber).toFixed();
+
+  let progressBar = document
+    .querySelector(`[data-card = "${cardNumber}"]`)
+    .querySelector('.progress');
+
+  if (progressBar) {
+    progressBar.querySelector('.progress__label strong').innerText = `${progress}%`;
+    progressBar.querySelector('.progress__line-bar').style = `width: ${progress}%`;
+  }
 }
